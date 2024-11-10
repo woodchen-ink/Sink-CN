@@ -82,7 +82,7 @@ We welcome your contributions and PRs.
 
 > Video tutorial: [Watch here](https://www.youtube.com/watch?v=MkU23U2VE9E)
 
-1. [Fork](https://github.com/ccbikai/Sink/fork) the repository to your GitHub account.
+1. [Fork](https://github.com/woodchen-ink/sink/fork) the repository to your GitHub account.
 2. Create a project in [Cloudflare Pages](https://developers.cloudflare.com/pages/).
 3. Select the `Sink` repository and choose the `Nuxt.js` preset.
 4. Configure the following environment variables:

@@ -25,7 +25,7 @@
   HEADER authorization: Bearer SinkCool
   HEADER content-type: application/json
   BODY  {
-          "url": "https://github.com/ccbikai/Sink/issues/14",
+          "url": "https://github.com/woodchen-ink/sink/issues/14",
           "slug": "issue14"
         }
 ```
@@ -37,7 +37,7 @@ BODY数据必须是JSON格式。
   BODY  {
           "link": {
             "id": "xpqhaurv5q",
-            "url": "https://github.com/ccbikai/Sink/issues/14",
+            "url": "https://github.com/woodchen-ink/sink/issues/14",
             "slug": "issue14",
             "createdAt": 1718119809,
             "updatedAt": 1718119809
