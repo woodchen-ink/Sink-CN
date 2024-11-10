@@ -67,7 +67,7 @@ function updateLink(link, type) {
             <Copy
               v-else
               class="w-4 h-4 ml-1 shrink-0"
-              @click.prevent="copy(shortLink);toast('Copy successful!')"
+              @click.prevent="copy(shortLink);toast('复制成功！')"
             />
           </div>
 
@@ -132,7 +132,7 @@ function updateLink(link, type) {
                 <SquarePen
                   class="w-5 h-5 mr-2"
                 />
-                Edit
+                编辑
               </div>
             </DashboardLinksEditor>
 
@@ -147,7 +147,7 @@ function updateLink(link, type) {
               >
                 <Eraser
                   class="w-5 h-5 mr-2"
-                /> Delete
+                /> 删除
               </div>
             </DashboardLinksDelete>
           </PopoverContent>
@@ -160,8 +160,8 @@ function updateLink(link, type) {
               <span class="inline-flex items-center leading-5"><CalendarPlus2 class="w-4 h-4 mr-1" /> {{ shortDate(link.createdAt) }}</span>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Created At: {{ longDate(link.createdAt) }}</p>
-              <p>Updated At: {{ longDate(link.updatedAt) }}</p>
+              <p>创建于: {{ longDate(link.createdAt) }}</p>
+              <p>更新时间: {{ longDate(link.updatedAt) }}</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
@@ -173,7 +173,7 @@ function updateLink(link, type) {
                 <span class="inline-flex items-center leading-5"><Hourglass class="w-4 h-4 mr-1" /> {{ shortDate(link.expiration) }}</span>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Expires At: {{ longDate(link.expiration) }}</p>
+                <p>到期时间: {{ longDate(link.expiration) }}</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -184,3 +184,4 @@ function updateLink(link, type) {
     </NuxtLink>
   </Card>
 </template>
+

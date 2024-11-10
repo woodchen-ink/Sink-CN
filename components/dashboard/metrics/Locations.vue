@@ -61,7 +61,7 @@ const Tooltip = {
 <template>
   <Card class="flex flex-col md:h-[500px]">
     <CardHeader>
-      <CardTitle>Locations</CardTitle>
+      <CardTitle>位置</CardTitle> <!-- Locations -->
     </CardHeader>
     <CardContent class="flex-1 flex [&_[data-radix-aspect-ratio-wrapper]]:flex-1">
       <AspectRatio :ratio="65 / 30">
@@ -72,7 +72,7 @@ const Tooltip = {
         >
           <VisTopoJSONMap
             :topojson="worldMapTopoJSON"
-            map-feature-name="countries"
+            map-feature-name="国家" 
           />
           <ChartSingleTooltip
             index="id"
@@ -86,3 +86,4 @@ const Tooltip = {
     </CardContent>
   </Card>
 </template>
+

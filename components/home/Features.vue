@@ -3,41 +3,42 @@ import { AreaChart, Hourglass, Link, Paintbrush, ServerOff, Sparkles } from 'luc
 
 const features = ref([
   {
-    title: 'URL Shortening',
+    title: '网址缩短',
     description:
-          'Compress your URLs to their minimal length.',
+          '将 URL 压缩到最小长度。',
     icon: Link,
   },
   {
-    title: 'Analytics',
+    title: '分析',
     description:
-          'Monitor link analytics and gather insightful statistics.',
+          '监控链接分析并收集有价值的统计信息。',
     icon: AreaChart,
   },
   {
-    title: 'Serverless',
+    title: '无服务器',
     description:
-          'Deploy without the need for traditional servers.',
+          '无需传统服务器进行部署。',
     icon: ServerOff,
   },
   {
-    title: 'Customizable Slug',
+    title: '可定制的别名',
     description:
-          'Support for personalized slugs.',
+          '支持个性化的别名。',
     icon: Paintbrush,
   },
   {
-    title: 'AI Slug',
+    title: 'AI 别名',
     description:
-          'Leverage AI to generate slugs.',
+          '利用 AI 生成别名。',
     icon: Sparkles,
   },
   {
-    title: 'Link Expiration',
+    title: '链接过期',
     description:
-          'Set expiration dates for your links.',
+          '为您的链接设置过期日期。',
     icon: Hourglass,
   },
+
 ])
 </script>
 
@@ -45,10 +46,10 @@ const features = ref([
   <main class="pt-16 md:py-12">
     <div class="md:pb-12">
       <h2 class="text-4xl font-bold lg:text-5xl lg:tracking-tight">
-        Features
+        特征
       </h2>
       <p class="my-8 text-lg md:mb-0 text-slate-600">
-        Simple and sufficient functionality
+        简单且足够的功能
       </p>
     </div>
 

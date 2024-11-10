@@ -21,12 +21,12 @@ defineProps({
       <div
         class="h-12 px-4 font-medium text-left align-middle text-muted-foreground "
       >
-        Name
+        名称
       </div>
       <div
         class="h-12 px-4 font-medium text-right align-middle text-muted-foreground"
       >
-        Count
+        数量
       </div>
     </div>
     <VList
@@ -73,3 +73,4 @@ defineProps({
     </VList>
   </div>
 </template>
+

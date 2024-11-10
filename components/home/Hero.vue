@@ -23,28 +23,28 @@ const { title, description, github } = useAppConfig()
         <HomeLink
           href="/dashboard"
           target="_blank"
-          title="Dashboard"
+          title="仪表盘" 
           class="flex items-center justify-center gap-1"
           rel="noopener"
         >
           <AreaChart
             class="w-5 h-5"
           />
-          Dashboard
+          仪表盘 
         </HomeLink>
         <HomeLink
           size="lg"
           type="outline"
           rel="noopener"
           :href="github"
-          title="Github"
+          title="Github" 
           class="flex items-center justify-center gap-1"
           target="_blank"
         >
           <GitHubIcon
             class="w-5 h-5"
           />
-          GitHub Repo
+          GitHub 仓库 
         </HomeLink>
       </div>
     </div>
