@@ -71,7 +71,8 @@
       - [Sink工具](https://github.com/zhuzhuyule/sink-extension)
 - [x] Raycast扩展
       - [Raycast-Sink](https://github.com/foru17/raycast-sink)
-- [ ] 苹果快捷方式
+- [x] 苹果快捷方式
+      - [Sink Shortcuts](https://s.search1api.com/sink001)
 - [ ] 增强的链接管理（使用Cloudflare D1）
 - [ ] 分析增强（支持合并过滤条件）
 - [ ] 仪表板性能优化（无限加载）
