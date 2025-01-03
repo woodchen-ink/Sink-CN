@@ -32,3 +32,17 @@
 ## 5. 为什么我在使用 NuxtHub 部署后看不到统计信息？
 
 NuxtHub 的 ANALYTICS 指向其数据集，您需要将 `NUXT_DATASET` 环境变量设置为指向相同的数据集。
+
+## 6. Why are links always case-insensitive?
+
+This is a feature of Sink. By default, we automatically convert all links to lowercase to avoid case-sensitive issues and improve usability. This ensures users don’t encounter errors due to accidental capitalization differences.
+
+However, you can disable this feature by setting the `NUXT_CASE_SENSITIVE` environment variable to `true`.
+
+### What happens when `NUXT_CASE_SENSITIVE` is `true`?
+
+Newly generated links will be case-sensitive, treating `MyLink` and `mylink` as distinct. Randomly generated slugs will include both uppercase and lowercase characters, offering a larger pool of unique combinations (but not user-friendly that why we default to non-case-sensitive).
+
+## 7. Why does the Metric list only show the top 500 data entries?
+
+To improve query performance, we have limited the amount of data. If you need to query more data, you can adjust it through `NUXT_LIST_QUERY_LIMIT`.

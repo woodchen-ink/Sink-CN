@@ -6,17 +6,22 @@
   <img
     src="https://trendshift.io/api/badge/repositories/10421"
     alt="ccbikai/Sink | Trendshift"
-    style="width: 250px; height: 55px;"
     width="250"
     height="55"
   />
 </a>
-<a href="https://news.ycombinator.com/item?id=40843683">
+<a href="https://news.ycombinator.com/item?id=40843683" target="_blank">
   <img
     src="https://hackernews-badge.vercel.app/api?id=40843683"
     alt="在Hacker News上推荐"
-    style="width: 250px; height: 55px;"
     width="250"
+    height="55"
+  />
+</a>
+<a href="https://www.uneed.best/tool/sink" target="_blank">
+  <img
+    src="https://www.uneed.best/POTD2.png"
+    alt="Uneed Badge"
     height="55"
   />
 </a>
@@ -36,7 +41,7 @@
 - **分析：** 监控链接分析并收集有价值的统计信息。
 - **无服务器：** 部署时无需传统服务器。
 - **可自定义的Slug：** 支持个性化的slug。
-- **🪄 AI Slug：** 利用AI生成slug。
+- **🪄 AI Slug：** 利用AI生成slug和区分大小写。
 - **链接过期：** 为您的链接设置到期日期。
 
 ## 🪧 演示
@@ -101,6 +106,7 @@
      - 将变量名称 `ANALYTICS` 绑定到 `sink` 数据集。
 
 7. 重新部署项目。
+8. Update code, refer to the official GitHub documentation [Syncing a fork branch from the web UI](https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork#syncing-a-fork-branch-from-the-web-ui).
 
 ## ⚒️ 配置
 
@@ -122,5 +128,5 @@
 
 ## ☕ 赞助
 
-1. [在X（Twitter）上关注我](https://x.com/0xKaiBi)。
+1. [在X（Twitter）上关注我](https://404.li/kai)。
 2. [在GitHub上成为赞助者](https://github.com/sponsors/ccbikai)。

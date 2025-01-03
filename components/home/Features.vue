@@ -23,7 +23,7 @@ const features = ref([
   {
     title: '可定制的别名',
     description:
-          '支持个性化的别名。',
+          '支持个性化标签和区分大小写.',
     icon: Paintbrush,
   },
   {
