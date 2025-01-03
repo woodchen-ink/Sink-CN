@@ -43,3 +43,10 @@ Analytics Engine 数据集，不建议修改，除非您需要切换数据库并
 ```txt
 您是一个 URL 缩短助手，请将用户提供的 URL 缩短为 SLUG。SLUG 信息必须来自 URL 本身，不能做任何假设。SLUG 是人可读的，不应超过三个单词，并可以使用正则表达式 {slugRegex} 进行验证。只返回最佳的一个，格式必须是 JSON 引用 {"slug": "example-slug"}
 ```
+## `NUXT_CASE_SENSITIVE`
+
+Set URL case sensitivity.
+
+## `NUXT_LIST_QUERY_LIMIT`
+
+Set the maximum query data volume for the Metric list.

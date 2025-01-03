@@ -27,9 +27,12 @@ export default eventHandler(async (event) => {
       expiration,
       metadata: {
         expiration,
+        url: newLink.url,
+        comment: newLink.comment,
       },
     })
     setResponseStatus(event, 201)
-    return { link: newLink }
+    const shortLink = `${getRequestProtocol(event)}://${getRequestHost(event)}/${newLink.slug}`
+    return { link: newLink, shortLink }
   }
 })
