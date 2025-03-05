@@ -7,10 +7,6 @@ useSeoMeta({
   ogTitle: title,
   ogDescription: description,
   ogImage: image,
-  twitterTitle: title,
-  twitterDescription: description,
-  twitterImage: image,
-  twitterCard: 'summary_large_image',
 })
 
 useHead({
