@@ -97,32 +97,32 @@ onBeforeMount(() => {
     </SelectTrigger>
     <SelectContent>
       <SelectItem value="today">
-        今天
+        {{ $t('dashboard.date_picker.today') }}
       </SelectItem>
       <SelectItem value="last-24h">
-        最近 24 小时
+        {{ $t('dashboard.date_picker.last_24h') }}
       </SelectItem>
       <SelectSeparator />
       <SelectItem value="this-week">
-        本周
+        {{ $t('dashboard.date_picker.this_week') }}
       </SelectItem>
       <SelectItem value="last-7d">
-        最近 7 天
+        {{ $t('dashboard.date_picker.last_7d') }}
       </SelectItem>
       <SelectSeparator />
       <SelectItem value="this-month">
-        本月
+        {{ $t('dashboard.date_picker.this_month') }}
       </SelectItem>
       <SelectItem value="last-30d">
-        最近 30 天
+        {{ $t('dashboard.date_picker.last_30d') }}
       </SelectItem>
       <SelectSeparator />
       <SelectItem value="last-90d">
-        最近 90 天
+        {{ $t('dashboard.date_picker.last_90d') }}
       </SelectItem>
       <SelectSeparator />
       <SelectItem value="custom">
-        自定义
+        {{ $t('dashboard.date_picker.custom') }}
       </SelectItem>
     </SelectContent>
   </Select>
@@ -130,7 +130,7 @@ onBeforeMount(() => {
   <Dialog v-model:open="openCustomDateRange">
     <DialogContent class="w-auto max-w-[95svw] max-h-[95svh] md:max-w-screen-md grid-rows-[auto_minmax(0,1fr)_auto]">
       <DialogHeader>
-        <DialogTitle>自定义日期</DialogTitle>
+        <DialogTitle>{{ $t('dashboard.date_picker.custom_title') }}</DialogTitle>
       </DialogHeader>
       <Tabs
         default-value="range"
@@ -138,10 +138,10 @@ onBeforeMount(() => {
         <div class="flex justify-center">
           <TabsList>
             <TabsTrigger value="date">
-              日期
+              {{ $t('dashboard.date_picker.single_date') }}
             </TabsTrigger>
             <TabsTrigger value="range">
-              日期范围
+              {{ $t('dashboard.date_picker.date_range') }}
             </TabsTrigger>
           </TabsList>
         </div>

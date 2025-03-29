@@ -18,7 +18,7 @@ const { title} = useAppConfig()
         target="_blank"
         title="HTML.ZONE"
       >
-      &copy; {{ new Date().getFullYear() }} HTML.ZONE 的产品
+      &copy; {{ new Date().getFullYear() }} Products of HTML.ZONE
       </a>
     </div>
   </section>

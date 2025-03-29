@@ -16,15 +16,15 @@ function logOut() {
     </AlertDialogTrigger>
     <AlertDialogContent class="max-w-[95svw] max-h-[95svh] md:max-w-lg grid-rows-[auto_minmax(0,1fr)_auto]">
       <AlertDialogHeader>
-        <AlertDialogTitle>注销？</AlertDialogTitle>
+        <AlertDialogTitle>{{ $t('logout.title') }}</AlertDialogTitle>
         <AlertDialogDescription>
-          您确定要注销吗？
+          {{ $t('logout.confirm') }}
         </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>
-        <AlertDialogCancel>取消</AlertDialogCancel>
+        <AlertDialogCancel>{{ $t('common.cancel') }}</AlertDialogCancel>
         <AlertDialogAction @click="logOut">
-          注销
+          {{ $t('logout.action') }}
         </AlertDialogAction>
       </AlertDialogFooter>
     </AlertDialogContent>

@@ -3,6 +3,8 @@ import { AlertCircle } from 'lucide-vue-next'
 import { toast } from 'vue-sonner'
 import { z } from 'zod'
 
+const { t } = useI18n()
+
 const LoginSchema = z.object({
   token: z.string().describe('SiteToken'),
 })
@@ -25,7 +27,7 @@ async function onSubmit(form) {
   }
   catch (e) {
     console.error(e)
-    toast.error('Login failed, please try again.', {
+    toast.error(t('login.failed'), {
       description: e.message,
     })
   }
@@ -36,10 +38,10 @@ async function onSubmit(form) {
   <Card class="w-full max-w-sm">
     <CardHeader>
       <CardTitle class="text-2xl">
-        登录
+        {{ $t('login.title') }}
       </CardTitle>
       <CardDescription>
-        输入您的站点令牌进行登录。
+        {{ $t('login.description') }}
       </CardDescription>
     </CardHeader>
     <CardContent class="grid gap-4">
@@ -51,13 +53,13 @@ async function onSubmit(form) {
       >
         <Alert v-if="previewMode">
           <AlertCircle class="w-4 h-4" />
-          <AlertTitle>Tips</AlertTitle>
+          <AlertTitle>{{ $t('login.tips') }}</AlertTitle>
           <AlertDescription>
-            预览模式的站点令牌是 <code class="font-mono text-green-500">SinkCool</code> .
+            {{ $t('login.preview_token') }} <code class="font-mono text-green-500">SinkCool</code> .
           </AlertDescription>
         </Alert>
         <Button class="w-full">
-          登录
+          {{ $t('login.submit') }}
         </Button>
       </AutoForm>
     </CardContent>

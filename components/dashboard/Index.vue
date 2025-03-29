@@ -67,7 +67,7 @@ onBeforeMount(() => {
           #left
         >
           <h3 class="text-xl font-bold leading-10">
-            {{ link.slug }} 的统计数据
+            {{ link.slug }} {{ $t('dashboard.stats') }}
           </h3>
         </template>
         <DashboardDatePicker @update:date-range="changeDate" />
