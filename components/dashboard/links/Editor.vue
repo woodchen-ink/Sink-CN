@@ -16,6 +16,7 @@ const props = defineProps({
 
 const emit = defineEmits(['update:link'])
 
+const { t } = useI18n()
 const link = ref(props.link)
 const dialogOpen = ref(false)
 
@@ -116,10 +117,10 @@ async function onSubmit(formData) {
   dialogOpen.value = false
   emit('update:link', newLink, isEdit ? 'edit' : 'create')
   if (isEdit) {
-    toast('链接更新成功')
+    toast(t('links.update_success'))
   }
   else {
-    toast('链接创建成功')
+    toast(t('links.create_success'))
   }
 }
 
@@ -135,22 +136,22 @@ const { previewMode } = useRuntimeConfig().public
           variant="outline"
           @click="randomSlug"
         >
-          创建链接
+          {{ $t('links.create') }}
         </Button>
       </slot>
     </DialogTrigger>
     <DialogContent class="max-w-[95svw] max-h-[95svh] md:max-w-lg grid-rows-[auto_minmax(0,1fr)_auto]">
       <DialogHeader>
-        <DialogTitle>{{ link.id ? '编辑链接' : '创建链接' }}</DialogTitle>
+        <DialogTitle>{{ link.id ? $t('links.edit') : $t('links.create') }}</DialogTitle>
       </DialogHeader>
       <p
         v-if="previewMode"
         class="text-sm text-muted-foreground"
       >
-        预览模式链接的有效期最长为 24 小时。
+        {{ $t('links.preview_mode_tip') }}
       </p>
       <AutoForm
-        class="px-2 space-y-2 overflow-y-auto"
+        class="overflow-y-auto px-2 space-y-2"
         :schema="EditLinkSchema"
         :form="form"
         :field-config="fieldConfig"
@@ -162,7 +163,7 @@ const { previewMode } = useRuntimeConfig().public
             v-if="!isEdit"
             class="relative"
           >
-            <div class="absolute right-0 flex space-x-3 top-1">
+            <div class="flex absolute right-0 top-1 space-x-3">
               <Shuffle
                 class="w-4 h-4 cursor-pointer"
                 @click="randomSlug"
@@ -185,11 +186,11 @@ const { previewMode } = useRuntimeConfig().public
               variant="secondary"
               class="mt-2 sm:mt-0"
             >
-              关闭
+              {{ $t('common.close') }}
             </Button>
           </DialogClose>
           <Button type="submit">
-            保存
+            {{ $t('common.save') }}
           </Button>
         </DialogFooter>
       </AutoForm>

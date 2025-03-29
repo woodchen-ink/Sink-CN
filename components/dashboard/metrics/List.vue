@@ -21,12 +21,12 @@ defineProps({
       <div
         class="h-12 px-4 font-medium text-left align-middle text-muted-foreground "
       >
-        名称
+        {{ $t('dashboard.name') }}
       </div>
       <div
         class="h-12 px-4 font-medium text-right align-middle text-muted-foreground"
       >
-        数量
+        {{ $t('dashboard.count') }}
       </div>
     </div>
     <VList

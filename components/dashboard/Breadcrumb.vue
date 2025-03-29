@@ -24,7 +24,7 @@ const { title } = useAppConfig()
           :as="NuxtLink"
           to="/dashboard"
         >
-          仪表板
+          {{ $t('dashboard.title') }}
         </BreadcrumbLink>
       </BreadcrumbItem>
       <BreadcrumbSeparator />

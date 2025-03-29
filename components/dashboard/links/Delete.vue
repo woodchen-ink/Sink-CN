@@ -29,15 +29,15 @@ async function deleteLink() {
     </AlertDialogTrigger>
     <AlertDialogContent class="max-w-[95svw] max-h-[95svh] md:max-w-lg grid-rows-[auto_minmax(0,1fr)_auto]">
       <AlertDialogHeader>
-        <AlertDialogTitle>您确定吗？</AlertDialogTitle>
+        <AlertDialogTitle>{{ $t('links.delete_confirm_title') }}</AlertDialogTitle>
         <AlertDialogDescription>
-          此操作无法撤销。此操作将真的从服务器删除您的链接。
+          {{ $t('links.delete_confirm_desc') }}
         </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>
-        <AlertDialogCancel>取消</AlertDialogCancel>
+        <AlertDialogCancel>{{ $t('common.cancel') }}</AlertDialogCancel>
         <AlertDialogAction @click="deleteLink">
-          继续
+          {{ $t('common.continue') }}
         </AlertDialogAction>
       </AlertDialogFooter>
     </AlertDialogContent>
