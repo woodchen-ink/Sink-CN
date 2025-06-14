@@ -11,10 +11,17 @@ export default eventHandler(async (event) => {
   // 获取请求的域名
   const host = getRequestHost(event)
 
+  // 添加调试日志
+  console.log(`[Domain Redirect Debug] Host: ${host}, Path: ${event.path}`)
+
   // 检查域名重定向规则（优先级最高）
   if (cloudflare) {
     const { KV } = cloudflare.env
-    const domainRedirect = await KV.get(`domain:${host}`, { type: 'json' })
+    const domainKey = `domain:${host}`
+    console.log(`[Domain Redirect Debug] Looking for key: ${domainKey}`)
+
+    const domainRedirect = await KV.get(domainKey, { type: 'json' })
+    console.log(`[Domain Redirect Debug] Found redirect rule:`, domainRedirect)
 
     if (domainRedirect && domainRedirect.enabled) {
       // 根据fullPathRedirect设置决定重定向方式
@@ -22,24 +29,32 @@ export default eventHandler(async (event) => {
       if (domainRedirect.fullPathRedirect) {
         // 全路径重定向：将当前路径附加到重定向URL后面
         targetUrl = joinURL(domainRedirect.redirectUrl, event.path)
-        console.log(`Full path domain redirect: ${host}${event.path} -> ${targetUrl}`)
+        console.log(`[Domain Redirect] Full path domain redirect: ${host}${event.path} -> ${targetUrl}`)
       }
       else {
         // 仅根路径重定向
         if (event.path === '/') {
           targetUrl = domainRedirect.redirectUrl
-          console.log(`Root path domain redirect: ${host} -> ${targetUrl}`)
+          console.log(`[Domain Redirect] Root path domain redirect: ${host} -> ${targetUrl}`)
         }
         else {
           // 非根路径不重定向，继续处理后续逻辑
           targetUrl = null
+          console.log(`[Domain Redirect] Non-root path, skipping redirect for: ${event.path}`)
         }
       }
 
       if (targetUrl) {
+        console.log(`[Domain Redirect] Redirecting to: ${targetUrl}`)
         return sendRedirect(event, targetUrl, +useRuntimeConfig(event).redirectStatusCode)
       }
     }
+    else {
+      console.log(`[Domain Redirect Debug] No valid redirect rule found for ${host}`)
+    }
+  }
+  else {
+    console.log(`[Domain Redirect Debug] No cloudflare context available`)
   }
 
   if (event.path === '/' && homeURL)
