@@ -40,9 +40,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/': {
-      prerender: true,
-    },
+    // 移除根路径的预渲染规则，让域名重定向中间件能够处理
     '/dashboard/**': {
       prerender: true,
       ssr: false,
@@ -69,6 +67,10 @@ export default defineNuxtConfig({
       openAPI: true,
     },
     timing: true,
+    // 确保根路径通过服务器端处理，不使用静态文件
+    routeRules: {
+      '/': { prerender: false },
+    },
     openAPI: {
       production: 'runtime',
       meta: {

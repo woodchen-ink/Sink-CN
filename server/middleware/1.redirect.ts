@@ -105,5 +105,5 @@ export default eventHandler(async (event) => {
     }
   }
 
-  console.log(`[Middleware] No redirect applied, continuing to normal page rendering`)
+  console.log(`[Middleware] No redirect applied, continuing to normal page rendering for path: ${event.path}`)
 })
