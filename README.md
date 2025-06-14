@@ -1,6 +1,10 @@
-# ⚡ Sink
+# ⚡ NewSink
 
-**一个简单/快速/安全的链接缩短器，支持分析，100%运行在Cloudflare上。**
+**一个简单/快速/安全的链接缩短器/重定向管理，支持分析，100%运行在Cloudflare上。**
+
+## 功能增强
+
+1. 支持域名重定向, 把不同的域名绑定到这个pages项目上, 根据用户访问的域名, 重定向到不同的地址. 比如 `a.com` 跳转到 `target.com`, 支持target增加路径和首页/全路径重定向
 
 <a href="https://trendshift.io/repositories/10421" target="_blank">
   <img
