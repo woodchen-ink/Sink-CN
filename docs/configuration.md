@@ -2,11 +2,20 @@
 
 Sink 提供了一些配置选项，可以参考 [.env.example](../.env.example)。
 
+> When using Worker deployment, please note that variables with the `NUXT_PUBLIC_` prefix need to be configured in Workers' **Settings** -> **Build** -> **Variables and Secrets** and **Settings** -> **Variables and Secrets**.
+
 ## `NUXT_PUBLIC_PREVIEW_MODE`
 
 将网站设置为演示模式，生成的链接将在 24 小时后过期，并且这些链接无法编辑或删除。
+> If you are using Worker deployment, this variable needs to be configured in  **Settings** -> **Build** -> **Variables and Secrets** and **Settings** -> **Variables and Secrets**.
+
+Sets the site to demo mode, the generated links will expire after 5 minutes, and the links cannot be edited or deleted.
 
 ## `NUXT_PUBLIC_SLUG_DEFAULT_LENGTH`
+
+> If you are using Worker deployment, this variable needs to be configured in  **Settings** -> **Build** -> **Variables and Secrets** and **Settings** -> **Variables and Secrets**.
+
+> If you are using Worker deployment, this variable needs to be configured in  **Settings** -> **Build** -> **Variables and Secrets** and **Settings** -> **Variables and Secrets**.
 
 设置生成的 SLUG 的默认长度。
 
