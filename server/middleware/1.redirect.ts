@@ -12,9 +12,9 @@ export default eventHandler(async (event) => {
   const host = getRequestHost(event)
 
   // 添加调试日志
-  console.log(`[Domain Redirect Debug] Host: ${host}, Path: ${event.path}`)
+  console.log(`[Domain Redirect Debug] Host: ${host}, Path: ${event.path}, Slug: "${slug}"`)
 
-  // 检查域名重定向规则（优先级最高）
+  // 检查域名重定向规则（优先级最高，必须在所有其他逻辑之前）
   if (cloudflare) {
     const { KV } = cloudflare.env
     const domainKey = `domain:${host}`
@@ -24,6 +24,8 @@ export default eventHandler(async (event) => {
     console.log(`[Domain Redirect Debug] Found redirect rule:`, domainRedirect)
 
     if (domainRedirect && domainRedirect.enabled) {
+      console.log(`[Domain Redirect Debug] Rule enabled: true, fullPathRedirect: ${domainRedirect.fullPathRedirect}`)
+
       // 根据fullPathRedirect设置决定重定向方式
       let targetUrl
       if (domainRedirect.fullPathRedirect) {
@@ -33,6 +35,7 @@ export default eventHandler(async (event) => {
       }
       else {
         // 仅根路径重定向
+        console.log(`[Domain Redirect Debug] Checking root path redirect, event.path: "${event.path}"`)
         if (event.path === '/') {
           targetUrl = domainRedirect.redirectUrl
           console.log(`[Domain Redirect] Root path domain redirect: ${host} -> ${targetUrl}`)
@@ -45,21 +48,29 @@ export default eventHandler(async (event) => {
       }
 
       if (targetUrl) {
-        console.log(`[Domain Redirect] Redirecting to: ${targetUrl}`)
+        console.log(`[Domain Redirect] Executing redirect to: ${targetUrl}`)
         return sendRedirect(event, targetUrl, +useRuntimeConfig(event).redirectStatusCode)
+      }
+      else {
+        console.log(`[Domain Redirect] No targetUrl generated, continuing to next logic`)
       }
     }
     else {
-      console.log(`[Domain Redirect Debug] No valid redirect rule found for ${host}`)
+      console.log(`[Domain Redirect Debug] No valid redirect rule found for ${host} (rule exists: ${!!domainRedirect}, enabled: ${domainRedirect?.enabled})`)
     }
   }
   else {
     console.log(`[Domain Redirect Debug] No cloudflare context available`)
   }
 
-  if (event.path === '/' && homeURL)
+  // 只有在没有域名重定向的情况下才检查 homeURL
+  if (event.path === '/' && homeURL) {
+    console.log(`[Home URL Redirect] Redirecting to homeURL: ${homeURL}`)
     return sendRedirect(event, homeURL)
+  }
 
+  // 短链接处理逻辑
+  console.log(`[Short Link Debug] Checking slug: "${slug}", reserveSlug: ${reserveSlug}, slugRegex test: ${slugRegex.test(slug)}`)
   if (slug && !reserveSlug.includes(slug) && slugRegex.test(slug) && cloudflare) {
     const { KV } = cloudflare.env
 
@@ -78,6 +89,7 @@ export default eventHandler(async (event) => {
     }
 
     if (link) {
+      console.log(`[Short Link] Found link for slug: ${slug}, redirecting to: ${link.url}`)
       event.context.link = link
       try {
         await useAccessLog(event)
@@ -88,5 +100,10 @@ export default eventHandler(async (event) => {
       const target = redirectWithQuery ? withQuery(link.url, getQuery(event)) : link.url
       return sendRedirect(event, target, +useRuntimeConfig(event).redirectStatusCode)
     }
+    else {
+      console.log(`[Short Link] No link found for slug: ${slug}`)
+    }
   }
+
+  console.log(`[Middleware] No redirect applied, continuing to normal page rendering`)
 })
