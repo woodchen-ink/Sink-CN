@@ -5,6 +5,9 @@
 ## 功能增强
 
 1. 支持域名重定向, 把不同的域名绑定到这个pages项目上, 根据用户访问的域名, 重定向到不同的地址. 比如 `a.com` 跳转到 `target.com`, 支持target增加路径和首页/全路径重定向
+   
+![image](https://github.com/user-attachments/assets/030d51a5-8b4f-40f0-8015-4e36f462cb02)
+
 
 <a href="https://trendshift.io/repositories/10421" target="_blank">
   <img
