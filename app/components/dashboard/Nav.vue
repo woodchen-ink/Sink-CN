@@ -15,6 +15,9 @@ const route = useRoute()
         >
           {{ $t('nav.links') }}
         </TabsTrigger>
+        <TabsTrigger value="/dashboard/domains">
+          域名重定向
+        </TabsTrigger>
         <TabsTrigger value="/dashboard/analysis">
           {{ $t('nav.analysis') }}
         </TabsTrigger>
