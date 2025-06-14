@@ -13,7 +13,15 @@
 <a href="https://news.ycombinator.com/item?id=40843683" target="_blank">
   <img
     src="https://hackernews-badge.vercel.app/api?id=40843683"
-    alt="在Hacker News上推荐"
+    alt="Featured on Hacker News"
+    width="250"
+    height="55"
+  />
+</a>
+<a href="https://hellogithub.com/repository/57771fd91d1542c7a470959b677a9944" target="_blank">
+  <img
+    src="https://abroad.hellogithub.com/v1/widgets/recommend.svg?rid=57771fd91d1542c7a470959b677a9944&claim_uid=qi74Zp23wYKeAVB&theme=neutral"
+    alt="Featured｜HelloGitHub"
     width="250"
     height="55"
   />
@@ -22,10 +30,12 @@
   <img
     src="https://www.uneed.best/POTW1.png"
     alt="Uneed Badge"
+    width="250"
     height="55"
   />
 </a>
 
+[<img src="https://devin.ai/assets/deepwiki-badge.png" alt="DeepWiki" height="20"/>](https://deepwiki.com/ccbikai/Sink)
 ![Cloudflare](https://img.shields.io/badge/Cloudflare-F69652?style=flat&logo=cloudflare&logoColor=white)
 ![Nuxt](https://img.shields.io/badge/Nuxt-00DC82?style=flat&logo=nuxtdotjs&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
@@ -64,7 +74,7 @@
 - **框架：** [Nuxt](https://nuxt.com/)
 - **数据库：** [Cloudflare Workers KV](https://developers.cloudflare.com/kv/)
 - **分析引擎：** [Cloudflare Workers Analytics Engine](https://developers.cloudflare.com/analytics/)
-- **UI 组件：** [Shadcn-vue](https://www.shadcn-vue.com/)
+- **UI 组件：** [shadcn-vue](https://www.shadcn-vue.com/)
 - **样式：** [Tailwind CSS](https://tailwindcss.com/)
 - **部署：** [Cloudflare](https://www.cloudflare.com/)
 
@@ -78,35 +88,18 @@
       - [Raycast-Sink](https://github.com/foru17/raycast-sink)
 - [x] 苹果快捷方式
       - [Sink Shortcuts](https://s.search1api.com/sink001)
-- [ ] 增强的链接管理（使用Cloudflare D1）
-- [ ] 分析增强（支持合并过滤条件）
-- [ ] 仪表板性能优化（无限加载）
-- [ ] 单元测试
-- [ ] 支持其他部署平台
+- [x] iOS App
+      - [Sink](https://apps.apple.com/app/id6745417598)
+- [ ] Enhanced Link Management (with Cloudflare D1)
+- [ ] Analytics Enhancements (Support for merging filter conditions)
+- [ ] Dashboard Performance Optimization (Infinite loading)
+- [ ] Units Test
 
 ## 🏗️ 部署
 
 > 视频教程： [点击观看](https://www.youtube.com/watch?v=MkU23U2VE9E)
 
-1. [Fork](https://github.com/woodchen-ink/sink/fork) 此库到您的GitHub账户。
-2. 在 [Cloudflare Pages](https://developers.cloudflare.com/pages/) 中创建一个项目。
-3. 选择 `Sink` 仓库并选择 `Nuxt.js` 预设。
-4. 配置以下环境变量：
-   - `NUXT_SITE_TOKEN`：必须长于 **8** 个字符。此令牌授予访问您的仪表板的权限。
-   - `NUXT_CF_ACCOUNT_ID`：查找您的 [账户ID](https://developers.cloudflare.com/fundamentals/setup/find-account-and-zone-ids/)。
-   - `NUXT_CF_API_TOKEN`：创建一个 [Cloudflare API令牌](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) ，至少需要 `Account.Account Analytics` 权限。 [查看参考。](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/#authentication)
-
-5. 保存并部署项目。
-6. 取消部署，然后导航到 **设置** -> **绑定** -> **添加**：
-   - **KV 命名空间**：将变量名称 `KV` 绑定到一个KV命名空间（在 **Workers & Pages** -> **KV** 中创建一个新的）。
-   - **Workers AI** （_可选_）：将变量名称 `AI` 绑定到Workers AI目录。
-   - **分析引擎**：
-     - 在 **Workers & Pages** 中，转到右侧的 **账户详情**，找到 `分析引擎`，并单击 `设置` 启用免费版本。
-     - 返回 **设置** -> **绑定** -> **添加** 并选择 **分析引擎**。
-     - 将变量名称 `ANALYTICS` 绑定到 `sink` 数据集。
-
-7. 重新部署项目。
-8. Update code, refer to the official GitHub documentation [Syncing a fork branch from the web UI](https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork#syncing-a-fork-branch-from-the-web-ui).
+We currently support deployment to [Cloudflare Workers](./docs/deployment/workers.md) (recommended) and [Cloudflare Pages](./docs/deployment/pages.md).
 
 ## ⚒️ 配置
 
@@ -115,6 +108,32 @@
 ## 🔌 API
 
 [API 文档](./docs/api.md)
+
+## 🧰 MCP
+
+We currently do not support native MCP Server, but we have OpenAPI documentation, and you can use the following method to support MCP.
+
+> Replace the domain name in `OPENAPI_SPEC_URL` with your own domain name.
+>
+> The `API_KEY` is the same as the `NUXT_SITE_TOKEN` in the environment variables.
+
+```json
+{
+  "mcpServers": {
+    "sink": {
+      "command": "uvx",
+      "args": [
+        "mcp-openapi-proxy"
+      ],
+      "env": {
+        "OPENAPI_SPEC_URL": "https://sink.cool/_docs/openapi.json",
+        "API_KEY": "SinkCool",
+        "TOOL_WHITELIST": "/api/link/create"
+      }
+    }
+  }
+}
+```
 
 ## 🙋🏻 常见问题解答
 
